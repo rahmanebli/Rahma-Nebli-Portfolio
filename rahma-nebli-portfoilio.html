@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahma Nebli - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #3498db; /* Changed from red to blue */
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 1rem;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 0.5rem auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* NEW: Enhanced Education & Experience Layout */
+        .timeline-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .timeline-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .timeline-card-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+        
+        .timeline-card-date {
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .timeline-card-company {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-card-details {
+            flex-grow: 1;
+        }
+        
+        .timeline-card-details ul {
+            margin-left: 1.2rem;
+            margin-top: 0.8rem;
+        }
+        
+        .timeline-card-details li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .timeline-card-details li:before {
+            content: "▹";
+            color: var(--primary);
+            position: absolute;
+            left: -1rem;
+        }
+        
+        .education-icon, .experience-icon, .association-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        /* NEW: Enhanced Associative Life Section */
+        .associative-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-items: center; /* Center the cards */
+        }
+        
+        .association-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 300px; /* Ensure consistent width */
+        }
+        
+        .association-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .association-icon {
+            background: linear-gradient(135deg, var(--accent), #2980b9);
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .association-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .association-card p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .association-role {
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: auto;
+        }
+        
+        .language-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .language-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .language-level {
+            height: 8px;
+            background-color: var(--light);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .language-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #2980b9);
+            border-radius: 4px;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-cards, .associative-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-card-date {
+                align-self: flex-start;
+            }
+            
+            .association-card {
+                max-width: 100%;
+            }
+      
+}
+
+.profile-img {
+    width: 120px; /* smaller size */
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin: 0 auto 1rem;
+    background-color: var(--light);
+    overflow: hidden; /* ensures it's perfectly circular */
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ensures no stretching */
+    border-radius: 50%;
+}
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-img">
+                <img src="image.jpg" alt="Rahma Nebli">
+            </div>
+            <h1>Rahma Nebli</h1>
+            <p class="tagline">Second-Year Master's Student in Professional Web and Multimedia Services (SWM)</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+216 29401432</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>rahmanebli01@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sousse, Tunisia</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="card">
+                    <p>Motivated by new technologies and web development, I am seeking a final-year internship (PFE) to apply and strengthen my skills in an innovative and dynamic environment.</p>
+                    
+                    <h3 style="margin-top: 1.5rem;">Soft Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Flexibility and adaptability</div>
+                        <div class="skill-item">Active listening</div>
+                        <div class="skill-item">Responsibility</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Languages</h3>
+                    <div class="language-container">
+                        <div class="language-item">
+                            <div>English</div>
+                            <div class="language-level">
+                                <div class="language-progress" style="width: 90%"></div>
+                            </div>
+                            <small>Fluent</small>
+                        </div>
+                        <div class="language-item">
+                            <div>French</div>
+                            <div class="language-level">
+                                <div class="language-progress" style="width: 85%"></div>
+                            </div>
+                            <small>Fluent</small>
+                        </div>
+                        <div class="language-item">
+                            <div>Arabic</div>
+                            <div class="language-level">
+                                <div class="language-progress" style="width: 100%"></div>
+                            </div>
+                            <small>Native</small>
+                        </div>
+
+                        <div class="language-item">
+                            <div>Italian</div>
+                            <div class="language-level">
+                                <div class="language-progress" style="width: 40%"></div>
+                            </div>
+                            <small>Basic</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Associative Life Section -->
+    <section id="associative" style="background-color: #f5f5f5;">
+        <div class="container">
+            <h2 class="section-title">Associative Life & Activities</h2>
+            <div class="associative-cards">
+                <div class="association-card">
+                    <div class="association-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>La Nuit de l'Info</h3>
+                    <p>Competitive coding challenge participation as part of Team The Hashira, solving technical problems under time constraints. Designed technical challenges using UML and collaborated to solve problems under time constraints.</p>
+                    <div class="association-role">Competitor</div>
+                    <div class="timeline-card-date" style="margin-top: 1rem;">December 2024</div>
+                </div>
+                
+                <div class="association-card">
+                    <div class="association-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Securinets Club</h3>
+                    <p>Participated in cybersecurity workshops and security awareness initiatives.</p>
+                    <div class="association-role">Active Member</div>
+                </div>
+                
+                <div class="association-card">
+                    <div class="association-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>ATAST Club</h3>
+                    <p>Active member participating in technology events and workshops.</p>
+                    <div class="association-role">Active Member</div>
+                </div>
+                
+                <div class="association-card">
+                    <div class="association-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Club</h3>
+                    <p>Engaged in technical workshops and collaborative projects covering Google development technologies and Adobe Creative Suite tools.</p>
+                    <div class="association-role">Active Member</div>
+                </div>
+                
+                <div class="association-card">
+                    <div class="association-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Tunivisions Club</h3>
+                    <p>Participated in club activities focused on professional development, including specialized training in public speaking and self-confidence.</p>
+                    <div class="association-role">Active Member</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline-cards">
+                <div class="timeline-card">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">Master's Degree in Professional Web and Multimedia Services (SWM)</h3>
+                        <div class="timeline-card-date">2024 - Present</div>
+                    </div>
+                    <div class="timeline-card-company">Higher Institute of Computer Science and Communication Technologies (ISITCOM)</div>
+                    <div class="timeline-card-details">
+                        <p>Advanced studies in web technologies, multimedia design, and modern development frameworks.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-card">
+                    <div class="education-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">Bachelor's Degree in Computer Science</h3>
+                        <div class="timeline-card-date">2021 - 2024</div>
+                    </div>
+                    <div class="timeline-card-company">Higher Institute of Computer Science and Communication Technologies (ISITCOM)</div>
+                    <div class="timeline-card-details">
+                        <p>Comprehensive foundation in computer science principles, programming, and software development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: #f5f5f5;">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline-cards">
+                <div class="timeline-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">Final-Year Internship</h3>
+                        <div class="timeline-card-date">Jan 2024 – May 2024</div>
+                    </div>
+                    <div class="timeline-card-company">InformaTech</div>
+                    <div class="timeline-card-details">
+                        <ul>
+                            <li>Developed a web application for restaurant management using Angular and Spring Boot</li>
+                            <li>Applied Agile Scrum methodology throughout the development process</li>
+                            <li>Contributed to the design, implementation, and integration of core features including secure authentication, inventory and product management, and a cashier interface</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">Web Development Internship</h3>
+                        <div class="timeline-card-date">Jun 2023 – Sep 2023</div>
+                    </div>
+                    <div class="timeline-card-company">IT Next Solutions</div>
+                    <div class="timeline-card-details">
+                        <ul>
+                            <li>Worked as part of a team to build a corporate website using React</li>
+                            <li>Implemented responsive UI components and interactive features</li>
+                            <li>Collaborated with designers and backend developers to ensure seamless integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="card">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">CSS</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">Dart</div>
+                        <div class="skill-item">Python</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Frameworks / Libraries</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Angular</div>
+                        <div class="skill-item">Spring Boot</div>
+                        <div class="skill-item">React</div>
+                        <div class="skill-item">Flutter</div>
+                        <div class="skill-item">Apache Spark</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Databases</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">Firebase</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rahma-nebli" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=rahmanebli01@gmail.com" class="social-link" target="_blank">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/rahmanebli" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Rahma Nebli. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for skill items on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillItems = document.querySelectorAll('.skill-item');
+            const timelineCards = document.querySelectorAll('.timeline-card');
+            const associationCards = document.querySelectorAll('.association-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            skillItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s, transform 0.5s';
+                observer.observe(item);
+            });
+            
+            timelineCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+            
+            associationCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>
